@@ -1,0 +1,113 @@
+:root{
+  --wine:#7B1E2B; --gold:#9A7B3F; --ink:#2C2622; --gray:#9A938C;
+  --track:#FAF6EF; --trackb:#E7DCCB; --cream:#F7F0E7; --div:#9c4552;
+  --page:#FBF8F4; --line:#ecdfe2; --whitebadge:#C8B24B;
+  --seg0:#6E1F2A; --seg1:#8C2D39; --seg2:#A8505B; --seg3:#C07F88; --seg4:#D6A9AF;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans KR','Segoe UI',sans-serif;
+  background:var(--page);color:var(--ink);line-height:1.55;font-size:15px}
+a{color:var(--wine)}
+.app{max-width:640px;margin:0 auto;padding-bottom:74px}
+header{position:sticky;top:0;z-index:20;background:rgba(251,248,244,.97);backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--wine);padding:11px 14px 9px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .logo{width:36px;height:36px;border-radius:8px;object-fit:cover}
+.brand .kicker{font-family:'DejaVu Serif',Georgia,serif;letter-spacing:3px;font-size:9px;color:var(--gold);font-weight:700}
+.brand h1{font-size:17px;margin:1px 0 0;font-weight:800;color:var(--ink)}
+.brand .sub{font-size:11px;color:var(--gray);margin-top:1px}
+.search{margin-top:10px;position:relative}
+.search input{width:100%;padding:11px 38px;border:1px solid var(--trackb);border-radius:11px;
+  font-size:15px;background:#fff;outline:none;color:var(--ink)}
+.search input:focus{border-color:var(--wine)}
+.search .ic{position:absolute;left:12px;top:11px;color:var(--gold)}
+.search .clr{position:absolute;right:10px;top:8px;border:none;background:none;font-size:18px;color:var(--gray);cursor:pointer;padding:4px}
+.filters{margin-top:8px}
+.frow{display:flex;align-items:center;gap:6px;margin:5px 0;flex-wrap:wrap}
+.frow .axis{font-size:12px;font-weight:800;color:var(--wine);width:34px;flex:0 0 34px}
+.chip{font-size:12px;padding:5px 11px;border:1px solid var(--trackb);background:#fff;border-radius:20px;cursor:pointer;color:#5a4a4a}
+.chip.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+.fmeta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:12px;color:var(--gray)}
+.mode{display:flex;border:1px solid var(--trackb);border-radius:20px;overflow:hidden}
+.mode button{border:none;background:#fff;font-size:11px;padding:5px 10px;cursor:pointer;color:#5a4a4a}
+.mode button.on{background:var(--gold);color:#fff}
+.reset{border:none;background:none;color:var(--wine);font-size:12px;cursor:pointer;text-decoration:underline}
+main{padding:10px 14px}
+.count{font-size:12px;color:var(--gray);margin:4px 2px 9px}
+/* list card — flat, PDF 느낌 */
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:10px;cursor:pointer}
+.card:active{background:#fffdfb}
+.chead{display:flex;gap:11px;align-items:center}
+.thumb{width:50px;height:50px;flex:0 0 50px;border-radius:9px;background:var(--cream);overflow:hidden;position:relative;border:1px solid var(--trackb)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb svg{width:100%;height:100%;padding:4px}
+.ct{flex:1;min-width:0}
+.cn{font-size:16px;font-weight:800;color:var(--ink)}
+.cno{color:var(--wine);font-weight:800;font-size:13px}
+.dot{font-size:11px;margin:0 2px}
+.dot.red{color:var(--wine)} .dot.white{color:var(--whitebadge)}
+.badge{font-size:10px;font-weight:700;color:#fff;padding:1px 8px;border-radius:10px;margin-left:5px;vertical-align:2px}
+.badge.red{background:var(--wine)} .badge.white{background:var(--whitebadge)}
+.cen{font-size:12px;color:var(--gray)}
+.ctag{font-size:12px;color:#6a5c58;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pillrow{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
+.pill{font-size:10.5px;background:var(--cream);color:var(--wine);border-radius:7px;padding:2px 8px;border:1px solid var(--trackb)}
+/* modal detail — PDF 카드 재현 */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(30,20,20,.45);display:none;align-items:flex-end;justify-content:center}
+.modal.open{display:flex}
+.sheet{background:var(--page);width:100%;max-width:640px;max-height:93vh;overflow-y:auto;border-radius:16px 16px 0 0;padding-bottom:30px;animation:up .25s ease}
+@keyframes up{from{transform:translateY(30px);opacity:.6}to{transform:none;opacity:1}}
+.shead{position:sticky;top:0;background:#fff;border-bottom:2px solid var(--div);padding:13px 15px;display:flex;gap:12px;align-items:center;z-index:2}
+.shead .thumb{width:56px;height:56px;flex:0 0 56px}
+.shead .x{margin-left:auto;background:var(--cream);border:1px solid var(--trackb);color:var(--wine);width:30px;height:30px;border-radius:50%;font-size:17px;cursor:pointer}
+.shead .cno{color:var(--wine)}
+.sbody{padding:13px 16px}
+.photo{width:100%;border-radius:12px;margin-bottom:10px;display:none;border:1px solid var(--trackb)}
+.photo.show{display:block}
+.stag{color:#6a5c58;font-size:13px;margin-bottom:6px}
+.two{display:flex;gap:16px;flex-wrap:wrap}
+.two .col{flex:1;min-width:240px}
+.sect{font-size:12.5px;font-weight:800;color:var(--wine);margin:13px 0 6px}
+.sect .mini{color:var(--gray);font-weight:400;font-size:10.5px}
+/* 구조 막대 — 축별 파스텔 */
+.srow{position:relative;height:20px;background:var(--track);border:1px solid var(--trackb);border-radius:8px;overflow:hidden;margin:5px 0}
+.sfill{position:absolute;left:0;top:0;height:100%;border-radius:8px 0 0 8px}
+.slab{position:absolute;left:9px;top:2px;font-size:12px;color:var(--ink);line-height:16px;white-space:nowrap}
+.slab b{font-weight:800}
+/* 맛·향 */
+.abar{display:flex;height:20px;border-radius:5px;overflow:hidden;margin:2px 0 8px}
+.abar i{height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:5px 12px}
+.legend span{font-size:12px;color:#4a3f3f}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+.kv{display:flex;margin:4px 0;font-size:13.5px;border-bottom:1px solid #f2e9ea;padding-bottom:4px}
+.kv .k{flex:0 0 74px;color:var(--wine);font-weight:800}
+.kv .v{flex:1;color:var(--ink)}
+.cbox{background:var(--cream);border-left:3px solid var(--wine);border-radius:0 7px 7px 0;padding:9px 12px;margin:7px 0;font-size:13px}
+.cbox b{color:var(--wine)}
+.feat{font-size:13.5px;text-align:justify;margin-top:8px;line-height:1.6}
+.feat b{color:var(--wine)}
+/* nav */
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--wine);display:flex;z-index:30;max-width:640px;margin:0 auto}
+nav button{flex:1;border:none;background:none;padding:9px 0 8px;font-size:11px;color:var(--gray);cursor:pointer}
+nav button.on{color:var(--wine);font-weight:800}
+nav .ni{display:block;font-size:19px;line-height:1;margin-bottom:2px}
+/* pairing */
+.pcats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:8px 0 14px}
+.pcat{background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 10px;text-align:center;cursor:pointer;font-size:13.5px;font-weight:700;color:var(--ink)}
+.pcat.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+.pcat .pe{font-size:22px;display:block;margin-bottom:3px}
+.rank{display:flex;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;margin-bottom:9px}
+.rank .medal{font-size:22px;flex:0 0 30px;text-align:center}
+.rank .why{font-size:12px;color:#6a5c58;margin-top:3px}
+/* reference */
+.reftabs{display:flex;gap:6px;margin:6px 0 12px;flex-wrap:wrap}
+.reftab{font-size:12.5px;padding:6px 12px;border:1px solid var(--trackb);border-radius:20px;background:#fff;cursor:pointer;color:#5a4a4a}
+.reftab.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+.term{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.term b{color:var(--ink)} .term .en{color:var(--gray);font-size:12px}
+.term p{margin:3px 0 0;font-size:13px;color:#3f3634}
+.crurank{font-weight:800;color:var(--wine);font-size:13px;margin:9px 0 4px;border-left:3px solid var(--wine);padding-left:8px}
+.refhd{font-family:'DejaVu Serif',Georgia,serif;letter-spacing:2px;font-size:11px;color:var(--gold);font-weight:700;border-left:3px solid var(--wine);padding-left:8px;margin:12px 0 6px}
+.empty{text-align:center;color:var(--gray);padding:40px 0;font-size:14px}

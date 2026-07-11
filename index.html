@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6E1A2E">
+<title>와인 포도 품종 250 · 사전</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="와인 품종">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand">
+      <img class="logo" src="icons/icon-192.png" alt="아이콘">
+      <div>
+        <div class="kicker">WINE GRAPE ENCYCLOPEDIA</div>
+        <h1>와인 포도 품종 250</h1>
+        <div class="sub">한글·원문·초성 검색 · 구조 필터 · 마리아주 추천</div>
+      </div>
+    </div>
+    <div id="topsearch"></div>
+  </header>
+
+  <main id="view"></main>
+
+  <nav>
+    <button data-tab="dict" class="on"><span class="ni">📖</span>사전</button>
+    <button data-tab="pair"><span class="ni">🍽️</span>마리아주</button>
+    <button data-tab="ref"><span class="ni">🎓</span>용어·등급</button>
+  </nav>
+</div>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
